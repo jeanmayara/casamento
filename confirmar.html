@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmação de Presença</title>
+  <link rel="stylesheet" href="confirmar.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Confirmação de Presença</h2>
+      <p>Digite os nomes dos integrantes da família:</p>
+      <input type="text" id="nome1" placeholder="Nome 1" />
+      <input type="text" id="nome2" placeholder="Nome 2" />
+      <input type="text" id="nome3" placeholder="Nome 3" />
+      <input type="text" id="nome4" placeholder="Nome 4" />
+      <input type="text" id="nome5" placeholder="Nome 5" />
+      <input type="text" id="nome6" placeholder="Nome 6" />
+      <input type="text" id="nome7" placeholder="Nome 7" />
+      <input type="text" id="nome8" placeholder="Nome 8" />
+      <input type="text" id="nome9" placeholder="Nome 9" />
+      <input type="text" id="nome10" placeholder="Nome 10" />
+      <button id="confirmarBtn">Confirmar Presença</button>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCJVu9G_on0PbxHW2kFfDOStFhPWf0935U",
+        authDomain: "casamento-3d645.firebaseapp.com",
+        projectId: "casamento-3d645",
+        storageBucket: "casamento-3d645.firebasestorage.app",
+        messagingSenderId: "1079181091120",
+        appId: "1:1079181091120:web:16ca724754570d3196a8f5",
+        measurementId: "G-TBMPCFY778"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+
+    document.getElementById("confirmarBtn").addEventListener("click", async () => {
+      const nomes = [];
+
+      for (let i = 1; i <= 10; i++) {
+        const nome = document.getElementById(`nome${i}`).value.trim();
+        if (nome) nomes.push(nome);
+      }
+
+      if (nomes.length === 0) {
+        alert("Digite pelo menos um nome!");
+        return;
+      }
+
+      try {
+        await addDoc(collection(db, "presencas"), {
+          nomes: nomes,
+          confirmadoEm: new Date()
+        });
+
+        // Redireciona para uma página de agradecimento
+        window.location.href = "presentes.html";
+      } catch (error) {
+        console.error("Erro ao salvar:", error);
+        alert("Erro ao confirmar presença. Tente novamente.");
+      }
+    });
+  </script>
+</body>
+</html>
