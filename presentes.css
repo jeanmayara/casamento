@@ -7,15 +7,39 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Playfair Display', Arial, sans-serif;
-  background-color: #24a4fa;
+  background-color: #e0ced2;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+.hero-img {
+  width: 180px;       /* Aumente ou diminua aqui */
+  height: 180px;      /* Altura proporcional */
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+.hero-img:hover {
+  transform: scale(1.05); /* Efeito zoom suave ao passar o mouse */
+}
+.hero-container {
+  background: linear-gradient(to bottom, #d8b1b4, #e0ced2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+
 
 /* Cabeçalho */
 .header {
-  background-color: #120fa8;
+  background: linear-gradient(to bottom, #d8b1b4, #e0ced2);
   color: white;
   text-align: center;
   padding: 2rem 1rem;
@@ -27,7 +51,7 @@ body {
 }
 
 .header p {
-  font-size: 1rem;
+  font-size: 20px;
   margin-top: 0.5rem;
 }
 
@@ -51,7 +75,7 @@ body {
 }
 .lista h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 3em;
+      font-size: 100px;
       margin: 0;
     }
 
@@ -80,7 +104,7 @@ body {
 
 
 .buy-button {
-  background-color: #120fa8;
+  background-color: black;
   color: white;
   font-weight: bold;
   font-size: 0.9rem;
@@ -92,7 +116,7 @@ body {
 }
 
 .buy-button:hover {
-  background-color: #0e0e9b;
+  background-color: black;
 }
 
 /* Modal */
@@ -143,7 +167,7 @@ body {
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 0.5rem;
-  background-color: #24a4fa;
+  background-color: black;
   color: white;
   cursor: pointer;
   transition: background 0.3s;
@@ -171,7 +195,7 @@ body {
 
 /* Rodapé */
 .rodape {
-  background-color: #120fa8;
+  background: linear-gradient(to top, #d8b1b4, #e0ced2);
   color: white;
   text-align: center;
   padding: 0.5rem 1rem;
@@ -222,6 +246,5 @@ body {
   .gift-card img {
     height: 130px;
   }
-
 
 
