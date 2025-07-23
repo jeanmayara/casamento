@@ -69,8 +69,6 @@
             <div class="swiper-wrapper">
               ${item.imagens.map(img => `<div class='swiper-slide'><img src='assets/${img}' alt='${item.nome}' /></div>`).join("")}
             </div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
           </div>
           <div class="info">
             <h3>${item.nome}</h3>
@@ -82,9 +80,9 @@
 
         new Swiper(`#${swiperId}`, {
           loop: true,
-          navigation: {
-            nextEl: `#${swiperId} .swiper-button-next`,
-            prevEl: `#${swiperId} .swiper-button-prev`
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false
           }
         });
       });
@@ -115,6 +113,42 @@
       const nome = document.getElementById("modalNome").textContent;
       const dadosPix = {
         "Jogo de Panelas": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Máquina de Café": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Jogo de Cama": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Aspirador de Pó": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Conjunto de Taças": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Micro-ondas": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Jogo de Talheres": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Liquidificador": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Toalhas de Banho": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Chaleira Elétrica": {
           qr: "assets/pix/panelas-qr.png",
           copiaCola: "00020126..."
         },
