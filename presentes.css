@@ -37,7 +37,7 @@ body {
   border-radius: 0;                  /* remove a forma circular */
 }
 .hero-img-wrapper {
-  width: 160px;
+  width: 210px;
   height: 120px; /* era 100px, agora mais alto */
   /*transform: rotate(45deg);*/
   overflow: hidden;
