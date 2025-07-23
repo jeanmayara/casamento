@@ -28,7 +28,7 @@ body {
 }
 
 .hero-img {
-  width: 180px;       /* Aumente ou diminua aqui */
+  width: 220px;       /* Aumente ou diminua aqui */
   height: 100px;      /* Altura proporcional */
   object-fit: cover;
   border: 4px solid white;
