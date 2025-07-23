@@ -37,7 +37,7 @@ body {
   border-radius: 0;                  /* remove a forma circular */
 }
 .hero-img-wrapper {
-  width: 210px;
+  width: 200px;
   height: 120px; /* era 100px, agora mais alto */
   /*transform: rotate(45deg);*/
   overflow: hidden;
@@ -57,17 +57,28 @@ body {
   transform: scale(1.05); /* Efeito zoom suave ao passar o mouse */
 }
 .hero-container {
-  background: linear-gradient(to bottom, #d8b1b4, #e0ced2);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  padding: 2rem;
+  padding: 1rem;
   max-width: 1000px;
+  margin: 0 auto;
+}
+.hero {
+  background: linear-gradient(to bottom, #d8b1b4, #e0ced2);
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
   margin: 0 auto;
   flex-wrap: wrap;
   text-align: center;
+  
 }
+
+
 
 
 /* Cabeçalho */
