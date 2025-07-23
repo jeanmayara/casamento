@@ -6,7 +6,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Playfair Display', Arial, sans-serif;
+  font-family: Arial, sans-serif;
   background-color: #24a4fa;
   display: flex;
   flex-direction: column;
@@ -30,11 +30,7 @@ body {
   font-size: 1rem;
   margin-top: 0.5rem;
 }
-.lista h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3em;
-      margin: 0;
-    }
+
 /* Grid de cartões */
 .container {
   flex: 1;
@@ -42,8 +38,8 @@ body {
   margin: 2rem auto;
   padding: 0 1rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Agora 2 por linha no celular */
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 /* Cartões de presente */
@@ -67,21 +63,20 @@ body {
 }
 
 .info h3 {
-  font-size: 1.1rem;
-  margin: 0.3rem 0;
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
 }
 
 .info p {
-  font-size: 0.95rem;
-  margin: 0.3rem 0;
+  color: #555;
+  margin: 0.5rem 0;
 }
 
 .buy-button {
   background-color: #120fa8;
   color: white;
   font-weight: bold;
-  font-size: 0.9rem;
-  padding: 0.6rem 1rem;
+  padding: 0.7rem 1.2rem;
   border: none;
   border-radius: 9999px;
   cursor: pointer;
@@ -172,10 +167,11 @@ body {
   color: white;
   text-align: center;
   padding: 0.5rem 1rem;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.2;
   margin-top: auto;
 }
+
 .rodape h1{
   font-size: 12px;
 }
