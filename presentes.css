@@ -67,20 +67,21 @@ body {
 }
 
 .info h3 {
-  font-size: 1.3rem;
-  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  margin: 0.3rem 0;
 }
 
 .info p {
-  color: #555;
-  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  margin: 0.3rem 0;
 }
 
 .buy-button {
   background-color: #120fa8;
   color: white;
   font-weight: bold;
-  padding: 0.7rem 1.2rem;
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
   border: none;
   border-radius: 9999px;
   cursor: pointer;
@@ -188,5 +189,23 @@ body {
 @media (min-width: 900px) {
   .container {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 400px) {
+  .info h3 {
+    font-size: 1rem;
+  }
+
+  .info p {
+    font-size: 0.9rem;
+  }
+
+  .buy-button {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .gift-card img {
+    height: 120px;
   }
 }
