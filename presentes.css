@@ -29,11 +29,28 @@ body {
 
 .hero-img {
   width: 180px;       /* Aumente ou diminua aqui */
-  height: 180px;      /* Altura proporcional */
-  border-radius: 50%;
+  height: 100px;      /* Altura proporcional */
   object-fit: cover;
   border: 4px solid white;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transform: rotate(45deg);          /* gira a imagem */
+  border-radius: 0;                  /* remove a forma circular */
+}
+.hero-img-wrapper {
+  width: 160px;
+  height: 120px; /* era 100px, agora mais alto */
+  /*transform: rotate(45deg);*/
+  overflow: hidden;
+  border: 4px solid white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+   border-radius: 12px;
+}
+.hero-img-inner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* foca no topo da imagem */
+  /*transform: rotate(-45deg);*/
 }
 
 .hero-img:hover {
