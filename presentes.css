@@ -1,52 +1,53 @@
+/* Reset básico e estrutura geral */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   background-color: #24a4fa;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
-  box-sizing: border-box;
+  min-height: 100vh;
 }
 
+/* Cabeçalho */
 .header {
   background-color: #120fa8;
-  font-weight: bold;
   color: white;
   text-align: center;
-  padding: 3rem 1rem;
-  width: 100%;
-  box-sizing: border-box;
+  padding: 2rem 1rem;
 }
 
 .header h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 0;
 }
 
 .header p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-top: 0.5rem;
 }
 
+/* Grid de cartões */
 .container {
   flex: 1;
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  box-sizing: border-box;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
+/* Cartões de presente */
 .gift-card {
   background: white;
   border-radius: 0.75rem;
-  color: black;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .gift-card img {
@@ -62,8 +63,8 @@ body {
 }
 
 .info h3 {
+  font-size: 1.3rem;
   margin: 0.5rem 0;
-  font-size: 1.5rem;
 }
 
 .info p {
@@ -73,13 +74,13 @@ body {
 
 .buy-button {
   background-color: #120fa8;
-  font-weight: bold;
   color: white;
-  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  padding: 0.7rem 1.2rem;
   border: none;
   border-radius: 9999px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s ease;
 }
 
 .buy-button:hover {
@@ -89,10 +90,7 @@ body {
 /* Modal */
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
   justify-content: center;
@@ -122,10 +120,14 @@ body {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  cursor: pointer;
   font-size: 1.5rem;
   background: none;
   border: none;
+  cursor: pointer;
+}
+
+.payment-buttons {
+  margin-top: 1rem;
 }
 
 .payment-buttons button {
@@ -143,17 +145,29 @@ body {
   background-color: #1b84ca;
 }
 
-.rodape {
-  background-color: #120fa8;
-  text-align: center;
-  padding: 0.5rem;
-  line-height: 1.2;
-  width: 100%;
-  box-sizing: border-box;
+#pixInfo {
+  margin-top: 1rem;
 }
 
-.rodape h1 {
+#pixQr {
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+#pixCode {
+  width: 100%;
+  height: 60px;
+  font-size: 14px;
+  resize: none;
+}
+
+/* Rodapé */
+.rodape {
+  background-color: #120fa8;
   color: white;
-  font-size: 12px;
-  margin: 0;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  margin-top: auto;
 }
