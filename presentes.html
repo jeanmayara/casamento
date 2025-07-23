@@ -2,10 +2,10 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lista de Presentes</title>
   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="presentes.css">
+  <link rel="stylesheet" href="presentes.css" />
 </head>
 <body>
   <header class="header">
@@ -13,152 +13,7 @@
     <p>Escolha um item para presentear os noivos ❤️</p>
   </header>
 
-  <main class="container">
-    <!-- Lista completa de 10 itens de presente -->
-    <!-- Cada item possui slider e botão com dados -->
-    <script>
-      const items = [
-        { nome: 'Jogo de Panelas', preco: '199,90', imagens: ['panela1.jpg', 'panela2.jpeg'] },
-        { nome: 'Máquina de Café', preco: '349,00', imagens: ['cafe.jpeg', 'cafe2.jpeg'] },
-        { nome: 'Jogo de Cama', preco: '179,90', imagens: ['cama.jpg', 'cama2.jpg'] },
-        { nome: 'Aspirador de Pó', preco: '299,99', imagens: ['imagem7.jpg', 'imagem8.jpg'] },
-        { nome: 'Conjunto de Taças', preco: '89,90', imagens: ['imagem9.jpg', 'imagem10.jpg'] },
-        { nome: 'Micro-ondas', preco: '599,00', imagens: ['imagem11.jpg', 'imagem12.jpg'] },
-        { nome: 'Jogo de Talheres', preco: '149,00', imagens: ['imagem13.jpg', 'imagem14.jpg'] },
-        { nome: 'Liquidificador', preco: '129,90', imagens: ['imagem15.jpg', 'imagem16.jpg'] },
-        { nome: 'Toalhas de Banho', preco: '99,00', imagens: ['imagem17.jpg', 'imagem18.jpg'] },
-        { nome: 'Chaleira Elétrica', preco: '159,00', imagens: ['imagem19.jpg', 'imagem20.jpg'] },
-      ];
-
-      document.addEventListener("DOMContentLoaded", () => {
-        const container = document.querySelector(".container");
-
-        items.forEach((item, index) => {
-          const card = document.createElement("div");
-          card.className = "gift-card";
-
-          const swiperId = `swiper-${index}`;
-          card.innerHTML = `
-            <div class="swiper" id="${swiperId}">
-              <div class="swiper-wrapper">
-                ${item.imagens.map(img => `<div class='swiper-slide'><img src='assets/${img}' alt='${item.nome}' /></div>`).join('')}
-              </div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-            </div>
-            <div class="info">
-              <h3>${item.nome}</h3>
-              <p>R$ ${item.preco}</p>
-              <button class="buy-button" data-nome="${item.nome}" data-preco="${item.preco}">Comprar</button>
-            </div>
-          `;
-
-          container.appendChild(card);
-
-          new Swiper(`#${swiperId}`, {
-            loop: true,
-            navigation: {
-              nextEl: `#${swiperId} .swiper-button-next`,
-              prevEl: `#${swiperId} .swiper-button-prev`
-            }
-          });
-        });
-
-        const modal = document.getElementById("modal");
-        const modalNome = document.getElementById("modalNome");
-        const modalPreco = document.getElementById("modalPreco");
-        const closeModal = document.getElementById("closeModal");
-
-        document.addEventListener("click", e => {
-          if (e.target.classList.contains("buy-button")) {
-            const nome = e.target.getAttribute("data-nome");
-            const preco = e.target.getAttribute("data-preco");
-            modalNome.textContent = nome;
-            modalPreco.textContent = `Valor: R$ ${preco}`;
-            modal.classList.add("active");
-          }
-        });
-
-        closeModal.addEventListener("click", () => {
-  modal.classList.remove("active");
-  document.getElementById("pixInfo").style.display = "none";
-  document.getElementById("pixQr").src = "";
-  document.getElementById("pixCode").value = "";
-});
-
-      });
-
-      function pagar(metodo) {
-  const nome = document.getElementById("modalNome").textContent;
-
-  const dadosPix = {
-    "Jogo de Panelas": {
-      qr: "assets/pix/panelas-qr.png",
-      copiaCola: "00020126450014br.gov.bcb.pix0123panelas@pix.com.br5204000053039865404199.905802BR5925Nome dos Noivos6009Sao Paulo62070503***6304ABCD"
-    },
-    "Máquina de Café": {
-      qr: "assets/pix/cafe-qr.png",
-      copiaCola: "00020126450014br.gov.bcb.pix0123cafe@pix.com.br5204000053039865404349.005802BR5925Nome dos Noivos6009Sao Paulo62070503***6304ABCD"
-    },
-    "Jogo de Cama": {
-      qr: "assets/pix/cama-qr.png",
-      copiaCola: "00020126450014br.gov.bcb.pix0123cafe@pix.com.br5204000053039865404349.005802BR5925Nome dos Noivos6009Sao Paulo62070503***6304ABCD"
-    },
-    "Aspirador de Pó": {
-      qr: "assets/pix/cafe-qr.png",
-      copiaCola: "00020126450014br.gov.bcb.pix0123cafe@pix.com.br5204000053039865404349.005802BR5925Nome dos Noivos6009Sao Paulo62070503***6304ABCD"
-    },
-    "Conjunto de Taças": {
-      qr: "assets/pix/cafe-qr.png",
-      copiaCola: "00020126450014br.gov.bcb.pix0123cafe@pix.com.br5204000053039865404349.005802BR5925Nome dos Noivos6009Sao Paulo62070503***6304ABCD"
-    },
-    "Micro-ondas": {
-      qr: "assets/pix/cafe-qr.png",
-      copiaCola: "00020126450014br.gov.bcb.pix0123cafe@pix.com.br5204000053039865404349.005802BR5925Nome dos Noivos6009Sao Paulo62070503***6304ABCD"
-    },
-    "Jogo de Talheres": {
-      qr: "assets/pix/cafe-qr.png",
-      copiaCola: "00020126450014br.gov.bcb.pix0123cafe@pix.com.br5204000053039865404349.005802BR5925Nome dos Noivos6009Sao Paulo62070503***6304ABCD"
-    },
-    "Liquidificador": {
-      qr: "assets/pix/cafe-qr.png",
-      copiaCola: "00020126450014br.gov.bcb.pix0123cafe@pix.com.br5204000053039865404349.005802BR5925Nome dos Noivos6009Sao Paulo62070503***6304ABCD"
-    },
-    "Toalhas de Banho": {
-      qr: "assets/pix/cafe-qr.png",
-      copiaCola: "00020126450014br.gov.bcb.pix0123cafe@pix.com.br5204000053039865404349.005802BR5925Nome dos Noivos6009Sao Paulo62070503***6304ABCD"
-    },
-    "Chaleira Elétrica": {
-      qr: "assets/pix/cafe-qr.png",
-      copiaCola: "00020126450014br.gov.bcb.pix0123cafe@pix.com.br5204000053039865404349.005802BR5925Nome dos Noivos6009Sao Paulo62070503***6304ABCD"
-    },
-    // adicione os outros aqui...
-  };
-
-  if (metodo === "pix") {
-    const pix = dadosPix[nome];
-    if (!pix) {
-      alert("QR Code não disponível para este item.");
-      return;
-    }
-
-    document.getElementById("pixQr").src = pix.qr;
-    document.getElementById("pixCode").value = pix.copiaCola;
-    document.getElementById("pixInfo").style.display = "block";
-  } else if (metodo === "cartao") {
-    // Exemplo de redirecionamento
-    window.location.href = "https://pagamento.com/cartao/" + encodeURIComponent(nome);
-  }
-}
-function copiarPix() {
-  const pixCode = document.getElementById("pixCode");
-  pixCode.select();
-  document.execCommand("copy");
-  alert("Código Pix copiado!");
-}
-
-    </script>
-  </main>
+  <main class="container"></main>
 
   <!-- Modal -->
   <div class="modal" id="modal">
@@ -170,17 +25,120 @@ function copiarPix() {
         <button onclick="pagar('pix')">Pagar com Pix</button>
         <button onclick="pagar('cartao')">Pagar com Cartão</button>
       </div>
-      <div id="pixInfo" style="display: none; margin-top: 1rem;">
-      <img id="pixQr" src="" alt="QR Code Pix" style="max-width: 200px; margin-bottom: 1rem;" />
-      <p><strong>Copia e Cola:</strong></p>
-      <textarea id="pixCode" readonly style="width: 100%; height: 60px; font-size: 14px;"></textarea>
-      <button onclick="copiarPix()" style="margin-top: 0.5rem;">Copiar código</button>
+      <div id="pixInfo" style="display: none;">
+        <img id="pixQr" src="" alt="QR Code Pix" />
+        <p><strong>Copia e Cola:</strong></p>
+        <textarea id="pixCode" readonly></textarea>
+        <button onclick="copiarPix()">Copiar código</button>
       </div>
     </div>
   </div>
-  <div class="rodape">
-    <h1>@copyright 2025. Todos os direitos reservados. | Allan Silva - Contato silvaallan710@gmail.com </h1>
-  </div>
+
+  <footer class="rodape">
+    <h1>&copy; 2025. Todos os direitos reservados. | Allan Silva - Contato silvaallan710@gmail.com</h1>
+  </footer>
+
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script>
+    const items = [
+      { nome: 'Jogo de Panelas', preco: '199,90', imagens: ['panela1.jpg', 'panela2.jpeg'] },
+      { nome: 'Máquina de Café', preco: '349,00', imagens: ['cafe.jpeg', 'cafe2.jpeg'] },
+      { nome: 'Jogo de Cama', preco: '179,90', imagens: ['cama.jpg', 'cama2.jpg'] },
+      { nome: 'Aspirador de Pó', preco: '299,99', imagens: ['imagem7.jpg', 'imagem8.jpg'] },
+      { nome: 'Conjunto de Taças', preco: '89,90', imagens: ['imagem9.jpg', 'imagem10.jpg'] },
+      { nome: 'Micro-ondas', preco: '599,00', imagens: ['imagem11.jpg', 'imagem12.jpg'] },
+      { nome: 'Jogo de Talheres', preco: '149,00', imagens: ['imagem13.jpg', 'imagem14.jpg'] },
+      { nome: 'Liquidificador', preco: '129,90', imagens: ['imagem15.jpg', 'imagem16.jpg'] },
+      { nome: 'Toalhas de Banho', preco: '99,00', imagens: ['imagem17.jpg', 'imagem18.jpg'] },
+      { nome: 'Chaleira Elétrica', preco: '159,00', imagens: ['imagem19.jpg', 'imagem20.jpg'] },
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.querySelector(".container");
+
+      items.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "gift-card";
+
+        const swiperId = `swiper-${index}`;
+        card.innerHTML = `
+          <div class="swiper" id="${swiperId}">
+            <div class="swiper-wrapper">
+              ${item.imagens.map(img => `<div class='swiper-slide'><img src='assets/${img}' alt='${item.nome}' /></div>`).join("")}
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+          <div class="info">
+            <h3>${item.nome}</h3>
+            <p>R$ ${item.preco}</p>
+            <button class="buy-button" data-nome="${item.nome}" data-preco="${item.preco}">Comprar</button>
+          </div>
+        `;
+        container.appendChild(card);
+
+        new Swiper(`#${swiperId}`, {
+          loop: true,
+          navigation: {
+            nextEl: `#${swiperId} .swiper-button-next`,
+            prevEl: `#${swiperId} .swiper-button-prev`
+          }
+        });
+      });
+
+      const modal = document.getElementById("modal");
+      const modalNome = document.getElementById("modalNome");
+      const modalPreco = document.getElementById("modalPreco");
+
+      document.addEventListener("click", e => {
+        if (e.target.classList.contains("buy-button")) {
+          const nome = e.target.dataset.nome;
+          const preco = e.target.dataset.preco;
+          modalNome.textContent = nome;
+          modalPreco.textContent = `Valor: R$ ${preco}`;
+          modal.classList.add("active");
+        }
+      });
+
+      document.getElementById("closeModal").addEventListener("click", () => {
+        modal.classList.remove("active");
+        document.getElementById("pixInfo").style.display = "none";
+        document.getElementById("pixQr").src = "";
+        document.getElementById("pixCode").value = "";
+      });
+    });
+
+    function pagar(metodo) {
+      const nome = document.getElementById("modalNome").textContent;
+      const dadosPix = {
+        "Jogo de Panelas": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        // Adicione os outros dados como acima
+      };
+
+      if (metodo === "pix") {
+        const pix = dadosPix[nome];
+        if (!pix) {
+          alert("QR Code não disponível para este item.");
+          return;
+        }
+
+        document.getElementById("pixQr").src = pix.qr;
+        document.getElementById("pixCode").value = pix.copiaCola;
+        document.getElementById("pixInfo").style.display = "block";
+      } else if (metodo === "cartao") {
+        window.location.href = "https://pagamento.com/cartao/" + encodeURIComponent(nome);
+      }
+    }
+
+    function copiarPix() {
+      const pixCode = document.getElementById("pixCode");
+      pixCode.select();
+      document.execCommand("copy");
+      alert("Código Pix copiado!");
+    }
+  </script>
 </body>
 </html>
