@@ -88,7 +88,8 @@ html, body {
     height: 90%
   }
   body {
-    background: url('assets/Fundo.png') no-repeat center center;
+    background-color: #f8f9ff;
+    background: url('assets/Fundo.jpg') no-repeat center center;
     background-size: cover;
     background-attachment: scroll;
   }
