@@ -29,7 +29,7 @@ body {
 
 .hero-img-wrapper {
   width: 200px;
-  height: 120px; /* era 100px, agora mais alto */
+  height: 150px; /* era 100px, agora mais alto */
   /*transform: rotate(45deg);*/
   overflow: hidden;
   border: 4px solid white;
