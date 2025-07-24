@@ -103,3 +103,10 @@ html, body {
     font-size: 1.1em;
   }
 }
+@media (max-width: 600px) {
+  body {
+    background: url('assets/fundo.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: scroll;
+  }
+}
