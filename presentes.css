@@ -63,11 +63,11 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 900px;
   margin: 0 auto;
   flex-wrap: wrap;
   text-align: center;
 }
+
 
 
 
@@ -325,3 +325,8 @@ body {
 }
 
 
+@media (min-width: 1000px) {
+  .hero {
+    max-width: 900px;
+  }
+}
