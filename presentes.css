@@ -306,3 +306,21 @@ body {
     height: 110px;
   }
 }
+@media (max-width: 600px) {
+  .header {
+    padding: 1rem 0.5rem; /* reduz o espaço no celular */
+  }
+
+  .hero {
+    padding: 1rem 0.5rem; /* reduz também se estiver usando .hero */
+    min-height: 60px; /* diminui a altura mínima */
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem; /* texto menor no celular */
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+}
