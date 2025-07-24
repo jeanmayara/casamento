@@ -15,7 +15,7 @@ body {
 .hero-content h1 {
   font-family: 'Great Vibes', cursive;
   font-size: 70px;
-  color: rgb(119, 103, 10);
+  color: black;
   margin-bottom: 0.5rem;
 }
 .hero-content p {
