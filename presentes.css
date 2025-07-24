@@ -28,7 +28,7 @@ body {
 }
 
 .hero-img-wrapper {
-  width: 200px;
+  width: 230px;
   height: 150px; /* era 100px, agora mais alto */
   /*transform: rotate(45deg);*/
   overflow: hidden;
@@ -321,8 +321,8 @@ body {
   }
 
   .hero-img-wrapper {
-    width: 230px; /* aumenta a largura da imagem*/
-    height: 130px; /* aumenta o tamanho da imagem*/ 
+    width: 250px; /* aumenta a largura da imagem*/
+    height: 130px; /* aumenta o altura da imagem*/ 
   }
   .hero-container {
     gap: 0.5rem; /* diminui o espaço entre imagem e texto */
