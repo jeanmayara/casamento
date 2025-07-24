@@ -329,7 +329,7 @@ body {
     padding: 0.5rem;
   }
   .hero-img-inner {
-    object-position: top;
+    object-position: 50% 18%;
   }
 }
 
