@@ -6,6 +6,7 @@
   <title>Presentes dos Noivos</title>
   <link rel="stylesheet" href="teste.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
 </head>
 <body>
   <header class="topo">
@@ -14,35 +15,160 @@
     <p>Escolha um presente especial e faça parte desse momento inesquecível ❤️</p>
   </header>
 
-  <main class="lista-presentes">
-    <!-- Exemplo de item -->
-    <div class="cadeado-card">
-      <img src="panela.png" alt="Jogo de Panelas">
-      <div class="info">
-        <h2>Jogo de Panelas</h2>
-        <p class="preco">R$ 199,90</p>
-        <button>Comprar</button>
-      </div>
-    </div>
+  <main class="container"></main>
 
-    <div class="cadeado-card">
-      <img src="cafeteira.png" alt="Máquina de Café">
-      <div class="info">
-        <h2>Máquina de Café</h2>
-        <p class="preco">R$ 349,00</p>
-        <button>Comprar</button>
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2 id="modalNome"></h2>
+      <p id="modalPreco"></p>
+      <div class="opcoes">
+        <button onclick="pagar('pix')">Pagar com Pix</button>
+        <button onclick="pagar('cartao')">Pagar com Cartão</button>
+      </div>
+      <div id="pixInfo" style="display:none; margin-top:20px;">
+        <img id="pixQr" src="" alt="QR Code Pix" style="width:200px; margin-bottom: 10px;"/>
+        <input type="text" id="pixCode" readonly style="width:100%; padding:8px;"/>
+        <button onclick="copiarPix()">Copiar código Pix</button>
       </div>
     </div>
+  </div>
 
-    <div class="cadeado-card">
-      <img src="aspirador.png" alt="Aspirador de Pó">
-      <div class="info">
-        <h2>Aspirador de Pó</h2>
-        <p class="preco">R$ 289,90</p>
-        <button>Comprar</button>
-      </div>
-    </div>
-    <!-- Inclua mais presentes aqui -->
-  </main>
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script>
+    const items = [
+      { nome: 'Jogo de Panelas', preco: '199,90', imagens: ['panela1.jpg', 'panela2.jpeg'] },
+      { nome: 'Máquina de Café', preco: '349,00', imagens: ['cafe.jpeg', 'cafe2.jpeg'] },
+      { nome: 'Jogo de Cama', preco: '179,90', imagens: ['cama.jpg', 'cama2.jpg'] },
+      { nome: 'Aspirador de Pó', preco: '299,99', imagens: ['imagem7.jpg', 'imagem8.jpg'] },
+      { nome: 'Conjunto de Taças', preco: '89,90', imagens: ['imagem9.jpg', 'imagem10.jpg'] },
+      { nome: 'Micro-ondas', preco: '599,00', imagens: ['imagem11.jpg', 'imagem12.jpg'] },
+      { nome: 'Jogo de Talheres', preco: '149,00', imagens: ['imagem13.jpg', 'imagem14.jpg'] },
+      { nome: 'Liquidificador', preco: '129,90', imagens: ['imagem15.jpg', 'imagem16.jpg'] },
+      { nome: 'Toalhas de Banho', preco: '99,00', imagens: ['imagem17.jpg', 'imagem18.jpg'] },
+      { nome: 'Chaleira Elétrica', preco: '159,00', imagens: ['imagem19.jpg', 'imagem20.jpg'] },
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.querySelector(".container");
+
+      items.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "gift-card";
+
+        const swiperId = `swiper-${index}`;
+        card.innerHTML = `
+          <div class="swiper" id="${swiperId}">
+            <div class="swiper-wrapper">
+              ${item.imagens.map(img => `<div class='swiper-slide'><img src='assets/${img}' alt='${item.nome}' /></div>`).join("")}
+            </div>
+          </div>
+          <div class="info">
+            <h3>${item.nome}</h3>
+            <p>R$ ${item.preco}</p>
+            <button class="buy-button" data-nome="${item.nome}" data-preco="${item.preco}">Comprar</button>
+          </div>
+        `;
+        container.appendChild(card);
+
+        new Swiper(`#${swiperId}`, {
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false
+          }
+        });
+      });
+
+      const modal = document.getElementById("modal");
+      const modalNome = document.getElementById("modalNome");
+      const modalPreco = document.getElementById("modalPreco");
+
+      document.addEventListener("click", e => {
+        if (e.target.classList.contains("buy-button")) {
+          const nome = e.target.dataset.nome;
+          const preco = e.target.dataset.preco;
+          modalNome.textContent = nome;
+          modalPreco.textContent = `Valor: R$ ${preco}`;
+          modal.classList.add("active");
+        }
+      });
+
+      document.getElementById("closeModal").addEventListener("click", () => {
+        modal.classList.remove("active");
+        document.getElementById("pixInfo").style.display = "none";
+        document.getElementById("pixQr").src = "";
+        document.getElementById("pixCode").value = "";
+      });
+    });
+
+    function pagar(metodo) {
+      const nome = document.getElementById("modalNome").textContent;
+      const dadosPix = {
+        "Jogo de Panelas": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Máquina de Café": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Jogo de Cama": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Aspirador de Pó": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Conjunto de Taças": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Micro-ondas": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Jogo de Talheres": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Liquidificador": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Toalhas de Banho": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Chaleira Elétrica": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+      };
+
+      if (metodo === "pix") {
+        const pix = dadosPix[nome];
+        if (!pix) {
+          alert("QR Code não disponível para este item.");
+          return;
+        }
+
+        document.getElementById("pixQr").src = pix.qr;
+        document.getElementById("pixCode").value = pix.copiaCola;
+        document.getElementById("pixInfo").style.display = "block";
+      } else if (metodo === "cartao") {
+        window.location.href = "https://pagamento.com/cartao/" + encodeURIComponent(nome);
+      }
+    }
+
+    function copiarPix() {
+      const pixCode = document.getElementById("pixCode");
+      pixCode.select();
+      document.execCommand("copy");
+      alert("Código Pix copiado!");
+    }
+  </script>
 </body>
 </html>
