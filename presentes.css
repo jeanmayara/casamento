@@ -318,7 +318,7 @@ body {
 
   .hero-img-wrapper {
     width: 130px;
-    height: 85px;
+    height: 100px;
   }
   .hero-container {
     gap: 0.5rem; /* diminui o espaço entre imagem e texto */
