@@ -180,3 +180,8 @@ body {
     padding: 1.5rem;
   }
 }
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
