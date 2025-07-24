@@ -255,6 +255,10 @@ body {
   .container {
     grid-template-columns: repeat(3, 1fr);
   }
+  .hero-content p {
+    font-size: 0.8rem;
+    margin-top: 0; /* tira espaço entre h1 e p */
+  }
 }
 /* Ajusta imagem do item */
 .gift-card img {
