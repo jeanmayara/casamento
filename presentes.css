@@ -67,7 +67,7 @@ body {
 }
 .hero {
   background: linear-gradient(to bottom, #d8b1b4, #e0ced2);
-  min-height: 100px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +86,7 @@ body {
   background: linear-gradient(to bottom, #d8b1b4, #e0ced2);
   color: white;
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 1rem 0.5rem;
 }
 
 .header h1 {
