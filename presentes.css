@@ -57,7 +57,7 @@ body {
   margin: 0 auto;
 }
 .hero {
-  background: linear-gradient(to bottom, #9dc8ff, white);
+  background: linear-gradient(to bottom, #9dc8ff, #b3defd);
   padding: 1rem;
   display: flex;
   align-items: center;
