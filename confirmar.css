@@ -86,7 +86,11 @@ html, body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 95%;
     height: 90%
-    background-color: #bcdfff;
+  }
+  body {
+    background: url('assets/Fundo.png') no-repeat center center;
+    background-size: cover;
+    background-attachment: scroll;
   }
 
   .card input[type="text"] {
@@ -107,11 +111,5 @@ html, body {
     font-size: 1.1em;
   }
 }
-@media (max-width: 600px) {
-  body {
-    background: url('assets/Fundo.png') no-repeat center center;
-    background-size: cover;
-    background-attachment: scroll;
-  }
-}
+
 
