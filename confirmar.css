@@ -109,7 +109,7 @@ html, body {
 }
 @media (max-width: 600px) {
   body {
-    background: url('assets/fundo2.jpg') no-repeat center center;
+    background: url('assets/fundo2.png') no-repeat center center;
     background-size: cover;
     background-attachment: scroll;
   }
