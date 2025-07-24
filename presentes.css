@@ -58,16 +58,19 @@ body {
 }
 .hero {
   background: linear-gradient(to bottom, #d8b1b4, #e0ced2);
-  height: 130px;
+  height: auto;
+  min-height: 80px;
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 900px;
+  width: 100%;
+  max-width: 900px;
   margin: 0 auto;
   flex-wrap: wrap;
   text-align: center;
-  
 }
+
 
 
 
@@ -298,13 +301,9 @@ body {
   }
 }
 @media (max-width: 600px) {
-  .header {
-    padding: 0.3rem 0.5rem;
-  }
-
   .hero {
-    padding: 0.3rem 0.5rem;
-    min-height: auto !important; /* força a altura mínima a ser ignorada */
+    padding: 0.3rem;
+    min-height: 50px;
   }
 
   .hero-content h1 {
@@ -316,7 +315,8 @@ body {
   }
 
   .hero-img {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
   }
 }
+
