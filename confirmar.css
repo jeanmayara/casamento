@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Great Vibes", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: white;
 }
 html, body {
@@ -35,15 +35,18 @@ html, body {
 }
 
 .card h2 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
+  font-size: 35px;
   color: #333;
+  font-family: 'Great Vibes', cursive;
 }
 
 .card p {
   margin-bottom: 20px;
   text-align: center;
   color: #666;
+  font-family: 'Segoe UI';
 }
 
 .card input[type="text"] {
@@ -90,7 +93,8 @@ html, body {
   }
 
   .card h2 {
-    font-size: 1.5em;
+    font-size: 20px;
+    font-family: 'Great Vibes', cursive;
   }
 
   .card p {
