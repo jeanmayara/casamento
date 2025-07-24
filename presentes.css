@@ -308,17 +308,22 @@ body {
   .hero-content h1 {
     font-size: 1.2rem;
     margin-bottom: 0.2rem;
+    margin-top: 0.4rem; /* diminui o espaço vindo de cima */
   }
 
   .hero-content p {
     font-size: 0.8rem;
+    margin-top: 0; /* tira espaço entre h1 e p */
   }
 
   .hero-img-wrapper {
-    width: 100px;
-    height: 70px;
+    width: 130px;
+    height: 85px;
   }
-
+  .hero-container {
+    gap: 0.5rem; /* diminui o espaço entre imagem e texto */
+    padding: 0.5rem;
+  }
   .hero-img-inner {
     object-position: top;
   }
