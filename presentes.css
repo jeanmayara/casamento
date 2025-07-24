@@ -58,8 +58,6 @@ body {
 }
 .hero {
   background: linear-gradient(to bottom, #d8b1b4, #e0ced2);
-  height: auto;
-  min-height: 80px;
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -70,6 +68,7 @@ body {
   flex-wrap: wrap;
   text-align: center;
 }
+
 
 
 
@@ -261,6 +260,7 @@ body {
 .gift-card img {
   height: 150px; /* menor para caber melhor em duas colunas */
 }
+
 /* Se for uma tela muito estreita, mostra 1 por linha */
 @media (max-width: 400px) {
   .info h3 {
@@ -302,21 +302,26 @@ body {
 }
 @media (max-width: 600px) {
   .hero {
-    padding: 0.3rem;
-    min-height: 50px;
+    padding: 0.5rem;
   }
 
   .hero-content h1 {
     font-size: 1.2rem;
+    margin-bottom: 0.2rem;
   }
 
   .hero-content p {
     font-size: 0.8rem;
   }
 
-  .hero-img {
-    width: 80px;
-    height: 80px;
+  .hero-img-wrapper {
+    width: 100px;
+    height: 70px;
+  }
+
+  .hero-img-inner {
+    object-position: top;
   }
 }
+
 
