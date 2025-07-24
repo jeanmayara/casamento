@@ -3,7 +3,7 @@ body {
   padding: 0;
   font-family: "Great Vibes", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: white;
-  background: url('assets/fundo.jpg') no-repeat center center fixed;
+  background: url('assets/Fundo.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 html, body {
@@ -109,7 +109,7 @@ html, body {
 }
 @media (max-width: 600px) {
   body {
-    background: url('assets/fundo2.png') no-repeat center center;
+    background: url('assets/Fundo.png') no-repeat center center;
     background-size: cover;
     background-attachment: scroll;
   }
