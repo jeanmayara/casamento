@@ -38,11 +38,11 @@
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   <script>
     const items = [
-      { nome: 'Panela de Pressão', preco: '285,00', imagens: ['presentes/panela 1.jpeg', 'presentes/panela 2.jpeg'] },
+      { nome: 'Panela de Pressão', preco: '285,00', imagens: ['presentes/panela1.jpeg', 'presentes/panela2.jpeg'] },
       { nome: 'Utensilhos para cozinha', preco: '180,00', imagens: ['presentes/cozinha.png', 'presentes/cozinha2.png'] },
       { nome: 'Edredom e cobertor', preco: '145,00', imagens: ['presentes/edredom.png', 'presentes/edredom2.png'] },
       { nome: 'Cortina Blackout', preco: '170,00', imagens: ['presentes/cortina.png', 'presentes/cortina2.png'] },
-      { nome: 'Jogo de Panelas', preco: '480,00', imagens: ['presentes/jogo 1.jpeg', 'presentes/jogo 2.jpeg'] },
+      { nome: 'Jogo de Panelas', preco: '480,00', imagens: ['presentes/jogo1.jpeg', 'presentes/jogo2.jpeg'] },
       { nome: 'Cobre leito', preco: '150,00', imagens: ['presentes/leito.png', 'presentes/leito2.png'] },
       { nome: 'Kit Potes herméticos', preco: '115,00', imagens: ['presentes/pote.jpeg', 'presentes/pote2.jpeg'] },
       { nome: 'Tapete Mesclado', preco: '175,00', imagens: ['presentes/tapete.png', 'presentes/tapete2.png'] },
@@ -61,7 +61,8 @@
         card.innerHTML = `
           <div class="swiper" id="${swiperId}">
             <div class="swiper-wrapper">
-              ${item.imagens.map(img => `<div class='swiper-slide'><img src='assets/${img}' alt='${item.nome}' /></div>`).join("")}
+              ${item.imagens.map(img => `<div class='swiper-slide'><img src='${img}' alt='${item.nome}' /></div>`).join("")}
+
             </div>
           </div>
           <div class="info">
