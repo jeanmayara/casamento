@@ -38,16 +38,16 @@
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   <script>
     const items = [
-      { nome: 'Jogo de Panelas', preco: '199,90', imagens: ['panela1.jpg', 'panela2.jpeg'] },
-      { nome: 'Máquina de Café', preco: '349,00', imagens: ['cafe.jpeg', 'cafe2.jpeg'] },
-      { nome: 'Jogo de Cama', preco: '179,90', imagens: ['cama.jpg', 'cama2.jpg'] },
-      { nome: 'Aspirador de Pó', preco: '299,99', imagens: ['imagem7.jpg', 'imagem8.jpg'] },
-      { nome: 'Conjunto de Taças', preco: '89,90', imagens: ['imagem9.jpg', 'imagem10.jpg'] },
-      { nome: 'Micro-ondas', preco: '599,00', imagens: ['imagem11.jpg', 'imagem12.jpg'] },
-      { nome: 'Jogo de Talheres', preco: '149,00', imagens: ['imagem13.jpg', 'imagem14.jpg'] },
-      { nome: 'Liquidificador', preco: '129,90', imagens: ['imagem15.jpg', 'imagem16.jpg'] },
-      { nome: 'Toalhas de Banho', preco: '99,00', imagens: ['imagem17.jpg', 'imagem18.jpg'] },
-      { nome: 'Chaleira Elétrica', preco: '159,00', imagens: ['imagem19.jpg', 'imagem20.jpg'] },
+      { nome: 'Panela de Pressão', preco: '285,00', imagens: ['panela 1.jpeg', 'panela 2.jpeg'] },
+      { nome: 'Utensilhos para cozinha', preco: '180,00', imagens: ['cozinha.png', 'cozinha2.png'] },
+      { nome: 'Edredom e cobertor', preco: '145,00', imagens: ['edredom.png', 'edredom2.png'] },
+      { nome: 'Cortina Blackout', preco: '170,00', imagens: ['cortina.png', 'cortina2.png'] },
+      { nome: 'Jogo de Panelas', preco: '480,00', imagens: ['jogo 1.jpeg', 'jogo 2.jpeg'] },
+      { nome: 'Cobre leito', preco: '150,00', imagens: ['leito.png', 'leito2.png'] },
+      { nome: 'Kit Potes herméticos', preco: '115,00', imagens: ['pote.jpeg', 'pote2.jpeg'] },
+      { nome: 'Tapete Mesclado', preco: '175,00', imagens: ['tapete.png', 'tapete2.png'] },
+      { nome: 'Jogo de Toalhas', preco: '210,00', imagens: ['toalha.png', 'toalha2.png'] },
+      { nome: 'Conjunto de Xícaras', preco: '160,00', imagens: ['xicara.png', 'xicara.png'] },
     ];
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -106,43 +106,43 @@
     function pagar(metodo) {
       const nome = document.getElementById("modalNome").textContent;
       const dadosPix = {
+        "Panela de Pressão": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Utensilhos para cozinha": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Edredom e cobertor": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Cortina Blackout": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
         "Jogo de Panelas": {
           qr: "assets/pix/panelas-qr.png",
           copiaCola: "00020126..."
         },
-        "Máquina de Café": {
+        "Cobre leito": {
           qr: "assets/pix/panelas-qr.png",
           copiaCola: "00020126..."
         },
-        "Jogo de Cama": {
+        "Kit Potes herméticos": {
           qr: "assets/pix/panelas-qr.png",
           copiaCola: "00020126..."
         },
-        "Aspirador de Pó": {
+        "Tapete Mesclado": {
           qr: "assets/pix/panelas-qr.png",
           copiaCola: "00020126..."
         },
-        "Conjunto de Taças": {
+        "Jogo de Toalhas": {
           qr: "assets/pix/panelas-qr.png",
           copiaCola: "00020126..."
         },
-        "Micro-ondas": {
-          qr: "assets/pix/panelas-qr.png",
-          copiaCola: "00020126..."
-        },
-        "Jogo de Talheres": {
-          qr: "assets/pix/panelas-qr.png",
-          copiaCola: "00020126..."
-        },
-        "Liquidificador": {
-          qr: "assets/pix/panelas-qr.png",
-          copiaCola: "00020126..."
-        },
-        "Toalhas de Banho": {
-          qr: "assets/pix/panelas-qr.png",
-          copiaCola: "00020126..."
-        },
-        "Chaleira Elétrica": {
+        "Conjunto de Xícaras": {
           qr: "assets/pix/panelas-qr.png",
           copiaCola: "00020126..."
         },
