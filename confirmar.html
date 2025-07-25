@@ -1,73 +1,153 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Confirmação de Presença</title>
-  <link rel="stylesheet" href="confirmar.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: url('assets/fundo_azul_suave.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #d4f3ff;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 30px;
+      padding: 50px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      max-width: 550px;
+      width: 90%;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .card h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 50px;
+      color: #1f3c88;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .inputs-wrapper {
+      display: grid;
+      gap: 12px;
+    }
+
+    .inputs-wrapper input {
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      background: #fdfdfd;
+    }
+
+    .card button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 16px;
+      background-color: #1f3c88;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .card button:hover {
+      background-color: #3056b3;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 30px;
+      }
+
+      .card h2 {
+        font-size: 40px;
+      }
+
+      .card p {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <h2>Confirmação de Presença</h2>
-      <p>Digite os nomes dos integrantes da família:</p>
-      <input type="text" id="nome1" placeholder="Nome 1" />
-      <input type="text" id="nome2" placeholder="Nome 2" />
-      <input type="text" id="nome3" placeholder="Nome 3" />
-      <input type="text" id="nome4" placeholder="Nome 4" />
-      <input type="text" id="nome5" placeholder="Nome 5" />
-      <input type="text" id="nome6" placeholder="Nome 6" />
-      <input type="text" id="nome7" placeholder="Nome 7" />
-      <input type="text" id="nome8" placeholder="Nome 8" />
-      <input type="text" id="nome9" placeholder="Nome 9" />
-      <input type="text" id="nome10" placeholder="Nome 10" />
-      <button id="confirmarBtn">Confirmar Presença</button>
-    </div>
+  <div class="card">
+    <h2>Confirmação de Presença</h2>
+    <p>Digite os nomes dos integrantes da família:</p>
+    <form id="formPresenca">
+      <div class="inputs-wrapper" id="campos"></div>
+      <button type="submit">Confirmar Presença</button>
+    </form>
   </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
     import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
     const firebaseConfig = {
-        apiKey: "AIzaSyCJVu9G_on0PbxHW2kFfDOStFhPWf0935U",
-        authDomain: "casamento-3d645.firebaseapp.com",
-        projectId: "casamento-3d645",
-        storageBucket: "casamento-3d645.firebasestorage.app",
-        messagingSenderId: "1079181091120",
-        appId: "1:1079181091120:web:16ca724754570d3196a8f5",
-        measurementId: "G-TBMPCFY778"
+      apiKey: "AIzaSyCJVu9G_on0PbxHW2kFfDOStFhPWf0935U",
+      authDomain: "casamento-3d645.firebaseapp.com",
+      projectId: "casamento-3d645",
+      storageBucket: "casamento-3d645.appspot.com",
+      messagingSenderId: "1079181091120",
+      appId: "1:1079181091120:web:16ca724754570d3196a8f5",
+      measurementId: "G-TBMPCFY778"
     };
 
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
     const db = getFirestore(app);
 
-    document.getElementById("confirmarBtn").addEventListener("click", async () => {
-      const nomes = [];
+    const camposDiv = document.getElementById("campos");
+    for (let i = 1; i <= 10; i++) {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.id = `nome${i}`;
+      input.placeholder = `Nome ${i}`;
+      camposDiv.appendChild(input);
+    }
 
+    document.getElementById("formPresenca").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nomes = [];
       for (let i = 1; i <= 10; i++) {
         const nome = document.getElementById(`nome${i}`).value.trim();
         if (nome) nomes.push(nome);
       }
 
       if (nomes.length === 0) {
-        alert("Digite pelo menos um nome!");
+        alert("Digite pelo menos um nome.");
         return;
       }
 
       try {
         await addDoc(collection(db, "presencas"), {
-          nomes: nomes,
+          nomes,
           confirmadoEm: new Date()
         });
-
-        // Redireciona para uma página de agradecimento
+        alert("Presença confirmada com sucesso!");
         window.location.href = "presentes.html";
-      } catch (error) {
-        console.error("Erro ao salvar:", error);
+      } catch (err) {
+        console.error("Erro ao salvar:", err);
         alert("Erro ao confirmar presença. Tente novamente.");
       }
     });
