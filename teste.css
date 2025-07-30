@@ -169,7 +169,12 @@ body {
 .close:hover {
   color: #000;
 }
-
+.rodape{
+    color: #002d5e;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 10px;
+}
 /* Responsivo */
 @media (max-width: 600px) {
   .foto-noivos {
