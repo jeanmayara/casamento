@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presentes dos Noivos</title>
+  <link rel="stylesheet" href="teste.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+</head>
+<body>
+  <header class="topo">
+    <img src="assets/Logo.jpg" alt="Noivos" class="foto-noivos">
+    <h1>Presentes para os noivos</h1>
+    <p>Escolha um presente especial e faça parte desse momento inesquecível 💙</p>
+  </header>
+
+  <main class="container"></main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2 id="modalNome"></h2>
+      <p id="modalPreco"></p>
+      <div class="opcoes">
+        <button onclick="pagar('pix')">Pagar com Pix</button>
+        <button onclick="pagar('cartao')">Pagar com Cartão</button>
+      </div>
+      <div id="pixInfo" style="display:none; margin-top:20px;">
+        <img id="pixQr" src="" alt="QR Code Pix" style="width:200px; margin-bottom: 10px;"/>
+        <input type="text" id="pixCode" readonly style="width:100%; padding:8px;"/>
+        <button onclick="copiarPix()">Copiar código Pix</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script>
+    const items = [
+      { nome: 'Panela de Pressão', preco: '285,00', imagens: ['presentes/panela1.jpeg', 'presentes/panela2.jpeg'] },
+      { nome: 'Utensilhos para cozinha', preco: '180,00', imagens: ['presentes/cozinha.png', 'presentes/cozinha2.png'] },
+      { nome: 'Edredom e cobertor', preco: '145,00', imagens: ['presentes/edredom.png', 'presentes/edredom2.png'] },
+      { nome: 'Cortina Blackout', preco: '170,00', imagens: ['presentes/cortina.png', 'presentes/cortina2.png'] },
+      { nome: 'Jogo de Panelas', preco: '480,00', imagens: ['presentes/jogo1.jpeg', 'presentes/jogo2.jpeg'] },
+      { nome: 'Cobre leito', preco: '150,00', imagens: ['presentes/leito.png', 'presentes/leito2.png'] },
+      { nome: 'Kit Potes herméticos', preco: '115,00', imagens: ['presentes/pote.jpeg', 'presentes/pote2.jpeg'] },
+      { nome: 'Tapete Mesclado', preco: '175,00', imagens: ['presentes/tapete.png', 'presentes/tapete2.png'] },
+      { nome: 'Jogo de Toalhas', preco: '210,00', imagens: ['presentes/toalha.png', 'presentes/toalha2.png'] },
+      { nome: 'Conjunto de Xícaras', preco: '160,00', imagens: ['presentes/xicara.png', 'presentes/xicara2.png'] },
+      { nome: 'Ajuda Com Lua de Mel', preco: 'Sem Valor', imagens: ['presentes/Lua.png'] },
+      { nome: 'Aspirador de Pó', preco: '275,00', imagens: ['presentes/ASP1.png', 'presentes/ASP2.png'] },
+      { nome: 'Esfregão MOP', preco: '180,00', imagens: ['presentes/MOP1.png', 'presentes/MOP2.png'] },
+      { nome: 'Fogão de Indução', preco: '1.600,00', imagens: ['presentes/fogo1.png', 'presentes/fogo2.png'] },
+      { nome: 'Frigobar', preco: '850,00', imagens: ['presentes/FRI1.png', 'presentes/FRI2.png'] },
+      { nome: 'Micro-ondas', preco: '850,00', imagens: ['presentes/micro1.png', 'presentes/micro2.png'] },
+      { nome: 'Purificador de Água', preco: '550,00', imagens: ['presentes/puri1.png', 'presentes/puri2.png'] },
+      { nome: 'Robo Aspirador', preco: '400,00', imagens: ['presentes/ROBO1.png', 'presentes/ROBO2.png'] },
+      { nome: 'Sanduicheira', preco: '160,00', imagens: ['presentes/san1.png', 'presentes/san2.png'] },
+      { nome: 'Sofá', preco: '2.000,00', imagens: ['presentes/SOFA1.png', 'presentes/SOFA2.png'] },
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.querySelector(".container");
+
+      items.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "gift-card";
+
+        const swiperId = `swiper-${index}`;
+        card.innerHTML = `
+          <div class="swiper" id="${swiperId}">
+            <div class="swiper-wrapper">
+              ${item.imagens.map(img => `<div class='swiper-slide'><img src='${img}' alt='${item.nome}' /></div>`).join("")}
+
+            </div>
+          </div>
+          <div class="info">
+            <h3>${item.nome}</h3>
+            <p>R$ ${item.preco}</p>
+            <button class="buy-button" data-nome="${item.nome}" data-preco="${item.preco}">Comprar</button>
+          </div>
+        `;
+        container.appendChild(card);
+
+        new Swiper(`#${swiperId}`, {
+          loop: true,
+          autoplay: {
+            delay: 3500,
+            disableOnInteraction: false
+          }
+        });
+      });
+
+      const modal = document.getElementById("modal");
+      const modalNome = document.getElementById("modalNome");
+      const modalPreco = document.getElementById("modalPreco");
+
+      document.addEventListener("click", e => {
+        if (e.target.classList.contains("buy-button")) {
+          const nome = e.target.dataset.nome;
+          const preco = e.target.dataset.preco;
+          modalNome.textContent = nome;
+          modalPreco.textContent = `Valor: R$ ${preco}`;
+          modal.classList.add("active");
+        }
+      });
+
+      document.getElementById("closeModal").addEventListener("click", () => {
+        modal.classList.remove("active");
+        document.getElementById("pixInfo").style.display = "none";
+        document.getElementById("pixQr").src = "";
+        document.getElementById("pixCode").value = "";
+      });
+    });
+
+    function pagar(metodo) {
+      const nome = document.getElementById("modalNome").textContent;
+      const dadosPix = {
+        "Panela de Pressão": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Utensilhos para cozinha": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Edredom e cobertor": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Cortina Blackout": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Jogo de Panelas": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Cobre leito": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Kit Potes herméticos": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Tapete Mesclado": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Jogo de Toalhas": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Conjunto de Xícaras": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Ajuda Com Lua de Mel": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Aspirador de Pó": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Esfregão MOP": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Fogão de Indução": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Frigobar": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Micro-ondas": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Purificador de Água": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Robo Aspirador": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Sanduicheira": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+        "Sofá": {
+          qr: "assets/pix/panelas-qr.png",
+          copiaCola: "00020126..."
+        },
+      };
+
+      if (metodo === "pix") {
+        const pix = dadosPix[nome];
+        if (!pix) {
+          alert("QR Code não disponível para este item.");
+          return;
+        }
+
+        document.getElementById("pixQr").src = pix.qr;
+        document.getElementById("pixCode").value = pix.copiaCola;
+        document.getElementById("pixInfo").style.display = "block";
+      } else if (metodo === "cartao") {
+        window.location.href = "https://pagamento.com/cartao/" + encodeURIComponent(nome);
+      }
+    }
+
+    function copiarPix() {
+      const pixCode = document.getElementById("pixCode");
+      pixCode.select();
+      document.execCommand("copy");
+      alert("Código Pix copiado!");
+    }
+  </script>
+</body>
+</html>
