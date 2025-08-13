@@ -252,6 +252,101 @@
           qr: "assets/pix/panelas-qr.png",
           copiaCola: "00020126..."
         },
+      }
+      const dadosCartao = {
+        "Panela de Pressão": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-2238nFWvur-285,00"
+        },
+        "Utensilhos para cozinha": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-3wDqKlew3-180,00"
+      },
+        "Edredom e cobertor": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-CbVxAT57b-145,00"
+        },
+        "Cortina Blackout": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-2239hGrp0L-170,00"
+        },
+        "Jogo de Panelas": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-3mSC75CK9-480,00"
+        },
+        "Cobre leito": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-g13LTCDob-150,00"
+        },
+        "Kit Potes herméticos": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-669Ub4bN5l-115,00"
+        },
+        "Tapete Mesclado": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-lGgfinBNZ-175,00"
+        },
+        "Jogo de Toalhas": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-E0LsPVVDt-210,00"
+        },
+        "Conjunto de Xícaras": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-lGgvgHddN-160,00"
+        },
+        "Ajuda Com Lua de Mel": {
+          link: ""
+        },
+        "Aspirador de Pó": {
+          link: ""
+        },
+        "Esfregão MOP": {
+          link: ""
+        },
+        "Fogão de Indução": {
+          link: ""
+        },
+        "Frigobar": {
+          link: ""
+        },
+        "Micro-ondas": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-3V5SiAA1V-850,00"
+        },
+        "Purificador de Água": {
+          link: ""
+        },
+        "Robo Aspirador": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-669ZPhFmu5-275,00"
+        },
+        "Sanduicheira": {
+          link: ""
+        },
+        "Sofá": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-1Dd5XM4WF9-2000,00"
+        },
+        "Air Fryer": {
+          link: "https://link.infinitepay.io/mayara-cristina-afonso/VC1DLUMtSQ-E0LwsglVH-230,00"
+        },
+        "Cafeteira": {
+          link: ""
+        },
+        "Espelho com Led": {
+          link: ""
+        },
+        "Ferro de Passar": {
+          link: ""
+        },
+        "Jogo de 6 Pratos Rasos": {
+          link: ""
+        },
+        "Jogo de Talheres": {
+          link: ""
+        },
+        "Kit de Copos": {
+          link: ""
+        },
+        "Mangueira de Quintal": {
+          link: ""
+        },
+        "Pratos de Jantar": {
+          link: ""
+        },
+        "Táboa de Churrasco": {
+          link: ""
+        },
+        "Táboa de Passar Roupa": {
+          link: ""
+        },
       };
 
       if (metodo === "pix") {
@@ -264,11 +359,17 @@
         document.getElementById("pixQr").src = pix.qr;
         document.getElementById("pixCode").value = pix.copiaCola;
         document.getElementById("pixInfo").style.display = "block";
+      
+      
       } else if (metodo === "cartao") {
-        window.location.href = "https://pagamento.com/cartao/" + encodeURIComponent(nome);
+        const cartao = dadosCartao[nome];
+        if (!cartao) {
+        alert("Link de pagamento com cartão não disponível para este item.");
+        return;
       }
+      window.open(cartao.link, "_self"); // Abre na mesma pagina 
     }
-
+  }
     function copiarPix() {
       const pixCode = document.getElementById("pixCode");
       pixCode.select();
